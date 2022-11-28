@@ -2,6 +2,7 @@
 name = "boilerplate"
 version = "0.1.0"
 description = "black, isort and mypy(strict) environments."
+authors = ["Ryu Juheon <saidbysolo@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
