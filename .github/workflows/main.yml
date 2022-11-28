@@ -39,7 +39,12 @@ jobs:
         run:
           poetry install --no-interaction
           
+      - name: check style
+        run: poetry run black .
+      
+      - name: check types
+        run: poetry run mypy
+          
       - name: run test
-        run: |
-          poetry run pytest test
+        run: poetry run pytest
         
