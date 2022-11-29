@@ -30,7 +30,7 @@ jobs:
           #add path for poetry
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Install dependencies
-        run: poetry install --no-interaction --with style
+        run: poetry install --no-interaction --only style
       - name: Check style with black
         run: poetry run black .
       - name: Check style with isort
@@ -58,7 +58,7 @@ jobs:
           #add path for poetry
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Install dependencies
-        run: poetry install --no-interaction --with type
+        run: poetry install --no-interaction --only type
       - name: Check type
         run: poetry run mypy
   
@@ -85,7 +85,7 @@ jobs:
           #add path for poetry
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Install dependencies
-        run: poetry install --no-interaction --with test
+        run: poetry install --no-interaction --only test
       - name: Check test
         run: poetry run pytest 
         
@@ -116,7 +116,7 @@ jobs:
           #add path for poetry
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH 
       - name: Install dependencies
-        #--without style, test, type 해도 괜찮은가?
+        #--only-root 해도 괜찮은가?
         run: poetry install --no-interaction
       #- name: Build whl
       #  run: poetry build
