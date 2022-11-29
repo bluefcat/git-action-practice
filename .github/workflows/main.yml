@@ -30,7 +30,7 @@ jobs:
       - name: Setup poetry
         run: |
           python -m pip install pip
-          pip install --yes poetry
+          pip install poetry
           #add path for poetry
           echo "$HOME/.poetry/bin" >> $GITHUB_PATH 
         
