@@ -45,13 +45,13 @@ jobs:
         run: poetry run mypy
           
       - name: Run test
-        run: poetry run pytest --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml 
+        run: poetry run pytest --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}-${{ matrix.os }}.xml 
         
       - name: Upload pytest test result
         uses: actions/upload-artifact@v2
         with:
-          name: pytest-results-${{ matrix.python-version }}
-          path: junit/test-results-${{ matrix.python-version }}.xml  
+          name: pytest-results-${{ matrix.python-version }}-${{ matrix.os }}
+          path: junit/test-results-${{ matrix.python-version }}-${{ matrix.os }}.xml  
           #보존기간 정의
           retention-days: 1
         #테스트가 실패해도 항상 Upload pytest test result를 실행함
