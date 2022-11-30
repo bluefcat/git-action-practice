@@ -124,7 +124,7 @@ jobs:
       - name: Build whl file
         run: poetry build
       - name: Upload whl file
-        uses: action/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: build
           path: dist/*.whl
