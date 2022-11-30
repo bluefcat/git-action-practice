@@ -22,13 +22,16 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
-      - name: Setup poetry
-        run: pipx install poetry
       - name: Setup python${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "poetry"
+      - name: Setup poetry
+        run: |
+          python -m pip install pip
+          pip install poetry
+          #add path for poetry
+          echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Install dependencies
         run: poetry install --no-interaction --only style
       - name: Check style with black
@@ -92,7 +95,7 @@ jobs:
         
         
   build:
-    name: build poetry env 
+    name: build and upload
     runs-on: ${{ matrix.os }}
     needs: [test]
     
@@ -118,12 +121,12 @@ jobs:
       - name: Install dependencies
         #--only-root 해도 괜찮은가?
         run: poetry install --no-interaction
-      #- name: Build whl
-      #  run: poetry build
-      #- name: Upload whl
-      #  uses: action/upload-artifact@v2
-      #  with:
-      #    name: whl
-      #    path: 1.whl
+      - name: Build whl file
+        run: poetry build
+      - name: Upload whl file
+        uses: action/upload-artifact@v2
+        with:
+          name: build
+          path: dist/*.whl
       #    #보존기간 정의
-      #   retention-days: 1
+          retention-days: 1
