@@ -9,8 +9,7 @@ on:
   pull_request:
     branches: [main, develop]
     paths-ignore: '**.md'
-env:
-  POETRY_URL: "https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py"
+
 jobs:
   #스타일 체크
   style:
@@ -24,9 +23,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v3
       - name: Setup poetry
-        run: |
-          curl -sSL ${{ env.POETRY_URL }} | python
-          source $HOME/.poetry/env
+        run: pipx install poetry
       - name: Setup python${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
