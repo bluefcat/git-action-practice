@@ -1,2 +1,1 @@
-def helloworld() -> str:
-    return "Hello World"
+from .boilerplate import *
