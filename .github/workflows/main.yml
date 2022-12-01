@@ -104,6 +104,9 @@ jobs:
         #action/setup-python에서 ${{matrix.python-version}} 을 하면 3.1로 인식되는 버그가 있음
         python-version: ["3.10"]
     
+    # main에 push 되었을때 현재 main 밖에 없긴한데 ref가 refs/heads/<branch> name으로 받는 걸 기억할 것
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
