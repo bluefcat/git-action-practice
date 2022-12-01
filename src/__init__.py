@@ -1,5 +1,5 @@
+"""this is __init__"""
 from .boilerplate import *
-import os
 
 
 def helloworld() -> str:
