@@ -125,6 +125,6 @@ jobs:
       - name: Upload whl file
         uses: actions/upload-artifact@v2
         with:
-          path: dist/*.whl
+          path: dist/boilerplate-0.1.0-py3-none-any.whl
       #    #보존기간 정의
           retention-days: 1
