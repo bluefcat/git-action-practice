@@ -68,7 +68,6 @@ jobs:
   #pytest 
   test:
     runs-on: ubuntu-latest
-    needs: [style, type]
     
     strategy:
       matrix:
@@ -97,7 +96,7 @@ jobs:
   build:
     name: build and upload
     runs-on: ${{ matrix.os }}
-    needs: [test]
+    needs: [style, type, test]
     
     strategy:
       matrix:
