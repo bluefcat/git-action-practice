@@ -130,7 +130,7 @@ jobs:
         id: download
         uses: actions/download-artifact@v2
         with:
-          name: build_name
+          name: build
           path: build_path
       - name: echo
         run: echo `ls ${{ steps.download.outputs.download-path }}`
