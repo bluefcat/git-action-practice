@@ -138,5 +138,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{steps.download.outputs.download-path}}
+          file: ${{steps.download.outputs.download-path}}/*.whl
+          file_glob: true
 
