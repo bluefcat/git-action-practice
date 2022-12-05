@@ -131,9 +131,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
+          path: build.zip
       - name: Upload release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{steps.download.outputs.download-path}}/build.zip
+          file: ${{steps.download.outputs.download-path}}/build/build.zip
 
